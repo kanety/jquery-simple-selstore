@@ -1,0 +1,21 @@
+.simple-selstore-listview {
+  .ss-item {
+    margin: 0 3px;
+
+    .ss-remove {
+      background-color: #eee;
+      border-radius: 5px;
+      margin: 3px;
+      padding: 0 5px;
+      font-size: .7em;
+      cursor: pointer;
+
+      &:after {
+        content: '×';
+      }
+      &:hover {
+        color: #f44;
+      }
+    }
+  }
+}

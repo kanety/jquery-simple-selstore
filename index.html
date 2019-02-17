@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <link rel="stylesheet" href="dist/jquery-simple-selstore.css">
+  <script src="dist/jquery-simple-selstore.js"></script>
+</head>
+<body>
+  <h1>Basic use</h1>
+  <div id="basic_selector">
+    <div><label><input type="checkbox" value="1">title1</label></div>
+    <div><label><input type="checkbox" value="2">title2</label></div>
+    <div><label><input type="checkbox" value="3">title3</label></div>
+    <div><label><input type="checkbox" value="4">title4</label></div>
+    <div><label><input type="checkbox" value="5">title5</label></div>
+  </div>
+  <form>
+    <div>Selected items: <button type="button" id="basic_clear">Clear</button></div>
+    <div id="basic_listview"></div>
+  </form>
+  <script>
+  $('#basic_selector').simpleSelstore('#basic_listview', {
+    storeKey: 'basic'
+  });
+  $('#basic_clear').on('click', function() {
+    $('#basic_selector').data('simple-selstore').clear();
+  });
+  </script>
+
+  <h1>Max selection</h1>
+  <div id="max_selector">
+    <div><label><input type="checkbox" value="1">title1</label></div>
+    <div><label><input type="checkbox" value="2">title2</label></div>
+    <div><label><input type="checkbox" value="3">title3</label></div>
+    <div><label><input type="checkbox" value="4">title4</label></div>
+    <div><label><input type="checkbox" value="5">title5</label></div>
+  </div>
+  <form>
+    <div>Selected items:</div>
+    <div id="max_listview"></div>
+  </form>
+  <script>
+  $('#max_selector').simpleSelstore('#max_listview', {
+    storeKey: 'max',
+    maxSelect: 2
+  });
+  </script>
+</body>
+</html>
