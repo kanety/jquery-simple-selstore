@@ -1,6 +1,6 @@
 {
   "name": "@kanety/jquery-simple-selstore",
-  "description": "",
+  "description": "A jquery plugin for multiple selection that stores selected items in storage",
   "version": "0.1.0",
   "author": "Yoshikazu Kaneta <kaneta@sitebridge.co.jp>",
   "repository": {
@@ -9,7 +9,7 @@
   },
   "keywords": [
     "jquery",
-    "multiple selection"
+    "selection store"
   ],
   "license": "MIT",
   "main": "dist/jquery-simple-selstore.js",

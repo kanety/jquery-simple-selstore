@@ -1,6 +1,6 @@
 # jquery-simple-selstore
 
-A jquery plugin for multiple selection that stores selected items in web storage.
+A jquery plugin for multiple selection that stores selected items in storage.
 
 ## Dependencies
 
@@ -27,10 +27,20 @@ Build html as follows:
 Then run:
 
 ```javascript
-$('#listview').simpleSelstore('#selector', {
-  storeKey: 'YOUR_STORE_KEY'
+$('#selector').simpleSelstore('#listview', {
+  storeKey: 'YOUR_KEY'
 });
 ```
+
+Set max selection:
+
+```javascript
+$('#selector').simpleSelstore('#listview', {
+  storeKey: 'YOUR_KEY',
+  maxSelect: 2
+});
+```
+
 ## License
 
 The library is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
