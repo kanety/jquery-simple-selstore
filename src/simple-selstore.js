@@ -29,17 +29,11 @@ export default class SimpleSelstore {
     }
 
     this.load();
-    this.bind();
-  }
-  
-  bind() {
-    this.selector.bind();
-    this.listview.bind();
   }
 
-  unbind() {
-    this.selector.unbind();
-    this.listview.unbind();
+  destroy() {
+    this.selector.destroy();
+    this.listview.destroy();
   }
 
   select(id, title) {

@@ -7,7 +7,21 @@ export default class Listview {
     this.options = options;
 
     this.$container = $(elem);
+
+    this.init();
+  }
+
+  init() {
     this.$container.addClass(`${NAMESPACE}-listview`);
+
+    this.unbind();
+    this.bind();
+  }
+
+  destroy() {
+    this.$container.removeClass(`${NAMESPACE}-listview`);
+
+    this.unbind();
   }
 
   bind() {
@@ -19,10 +33,6 @@ export default class Listview {
 
   unbind() {
     this.$container.off(`.${NAMESPACE}`);
-  }
-
-  container() {
-    return this.$container;
   }
 
   items() {

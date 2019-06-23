@@ -7,7 +7,21 @@ export default class Selector {
     this.options = options;
 
     this.$container = $(elem);
+
+    this.init();
+  }
+
+  init() {
     this.$container.addClass(`${NAMESPACE}-selector`);
+
+    this.unbind();
+    this.bind();
+  }
+
+  destroy() {
+    this.$container.removeClass(`${NAMESPACE}-selector`);
+
+    this.unbind();
   }
 
   bind() {
