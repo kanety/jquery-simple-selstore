@@ -74,6 +74,6 @@ export default class SimpleSelstore {
   }
 
   static setDefaults(options) {
-    $.extend(true, DEFAULTS, options);
+    return $.extend(true, DEFAULTS, options);
   }
 }
