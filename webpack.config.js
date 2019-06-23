@@ -40,6 +40,11 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
+        include: [
+          /src/,
+          /test/,
+          /node_modules\/@kanety\/js-store/
+        ],
         use: {
           loader: "babel-loader",
           options: {

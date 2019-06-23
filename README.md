@@ -27,10 +27,20 @@ Build html as follows:
 Then run:
 
 ```javascript
+$('#listview').simpleSelstore('#selector');
+```
+
+### Options
+
+Store selected elements in the web storage:
+
+```javascript
 $('#listview').simpleSelstore('#selector', {
+  store: 'session',  // or 'local'
   storeKey: 'YOUR_STORE_KEY'
 });
 ```
+
 ## License
 
 The library is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).

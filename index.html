@@ -21,7 +21,8 @@
   </form>
   <script>
   $('#basic_selector').simpleSelstore('#basic_listview', {
-    storeKey: 'basic'
+    store: 'session',
+    storeKey: 'simple-selstore-basic'
   });
   $('#basic_clear').on('click', function() {
     $('#basic_selector').data('simple-selstore').clear();
