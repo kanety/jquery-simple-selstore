@@ -4,6 +4,8 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
+  mode: "production",
+
   entry: {
     "jquery-simple-selstore": "./src/jquery-simple-selstore.js"
   },
@@ -38,6 +40,11 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
+        include: [
+          /src/,
+          /test/,
+          /node_modules\/@kanety\/js-store/
+        ],
         use: {
           loader: "babel-loader",
           options: {
@@ -50,7 +57,7 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           "css-loader",
           "sass-loader"
-        ],
+        ]
       }
     ]
   },

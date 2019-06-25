@@ -27,17 +27,17 @@ Build html as follows:
 Then run:
 
 ```javascript
-$('#selector').simpleSelstore('#listview', {
-  storeKey: 'YOUR_KEY'
-});
+$('#listview').simpleSelstore('#selector');
 ```
 
-Set max selection:
+### Options
+
+Store selected elements in the web storage:
 
 ```javascript
-$('#selector').simpleSelstore('#listview', {
-  storeKey: 'YOUR_KEY',
-  maxSelect: 2
+$('#listview').simpleSelstore('#selector', {
+  store: 'session',  // or 'local'
+  storeKey: 'YOUR_STORE_KEY'
 });
 ```
 

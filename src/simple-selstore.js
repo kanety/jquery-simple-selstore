@@ -1,16 +1,17 @@
 import $ from 'jquery';
+import Store from '@kanety/js-store';
+
 import { NAMESPACE } from './consts';
 import Listview from './listview';
 import Selector from './selector';
-import Store from './store';
 
 const DEFAULTS = {
   checkbox: 'input:checkbox',
   listname: 'items[]',
-  storeKey: NAMESPACE,
-  storeType: 'session',
   maxSelect: null,
-  maxAlert: null
+  maxAlert: null,
+  store: null,
+  storeKey: null
 };
 
 export default class SimpleSelstore {
@@ -19,20 +20,20 @@ export default class SimpleSelstore {
 
     this.selector = new Selector(selector, this, this.options);
     this.listview = new Listview(listview, this, this.options);
-    this.store = new Store(this, this.options);
+
+    if (this.options.store && this.options.storeKey) {
+      this.store = new Store({
+        type: this.options.store,
+        key: this.options.storeKey
+      });
+    }
 
     this.load();
-    this.bind();
-  }
-  
-  bind() {
-    this.selector.bind();
-    this.listview.bind();
   }
 
-  unbind() {
-    this.selector.unbind();
-    this.listview.unbind();
+  destroy() {
+    this.selector.destroy();
+    this.listview.destroy();
   }
 
   select(id, title) {
@@ -48,25 +49,31 @@ export default class SimpleSelstore {
   }
 
   load() {
-    let items = this.store.load();
+    if (!this.store) return;
+
+    let items = this.store.get();
+    if (!items) return;
+    
     items.forEach((item) => {
       this.select(item.id, item.title);
     });
   }
 
   save() {
+    if (!this.store) return;
+
     let items = this.listview.items().map((i, item) => {
       let $item = $(item);
       return { id: $item.data('ss-id'), title: $item.data('ss-title') };
     }).get();
 
-    this.store.save(items);
+    this.store.set(items);
   }
 
   clear() {
     this.selector.clear();
     this.listview.clear();
-    this.store.clear();
+    if (this.store) this.store.remove();
   }
 
   static getDefaults() {
@@ -74,6 +81,6 @@ export default class SimpleSelstore {
   }
 
   static setDefaults(options) {
-    $.extend(true, DEFAULTS, options);
+    return $.extend(true, DEFAULTS, options);
   }
 }

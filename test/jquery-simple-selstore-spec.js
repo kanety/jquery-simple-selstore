@@ -1,39 +1,48 @@
-describe('jquery-simple-selstore', function() {
-  beforeEach(function() {
+describe('jquery-simple-selstore', () => {
+  beforeEach(() => {
     document.body.innerHTML = __html__['index.html'];
+    eval($('script').text());
   });
 
-  it('has basic use', function() {
-    var $selector = $('#basic_selector');
-    var $listview = $('#basic_listview');
-    $selector.simpleSelstore($listview, {
-      storeKey: 'basic'
+  describe('basic', () => {
+    let $selector;
+    let $listview;
+
+    beforeEach(() => {
+      $selector = $('#basic_selector');
+      $listview = $('#basic_listview');
+      $clear = $('#basic_clear');
     });
 
-    $selector.find('input:checkbox[value="1"]').click();
-    $selector.find('input:checkbox[value="2"]').click();
-    expect($listview.find('.ss-item').length).toEqual(2);
+    it('updates listview with checked elements', () => {
+      $selector.find(':checkbox[value="1"]').click();
+      $selector.find(':checkbox[value="2"]').click();
+      expect($listview.find('.ss-item').length).toEqual(2);
 
-    $selector.find('input:checkbox[value="1"]').click();
-    expect($listview.find('.ss-item').length).toEqual(1);
+      $selector.find(':checkbox[value="1"]').click();
+      expect($listview.find('.ss-item').length).toEqual(1);
+    });
 
-    $listview.find('.ss-item[data-ss-id="2"] .ss-remove').click();
-    expect($listview.find('.ss-item').length).toEqual(0);
-
-    $selector.data('simple-selstore').clear();
+    it('clears checked elements', () => {
+      $clear.click();
+      expect($listview.find('.ss-item').length).toEqual(0);
+    });
   });
 
-  it('sets max selection', function() {
-    var $selector = $('#max_selector');
-    var $listview = $('#max_listview');
-    $selector.simpleSelstore($listview, {
-      storeKey: 'max',
-      maxSelect: 2
+  describe('max', () => {
+    let $selector;
+    let $listview;
+
+    beforeEach(() => {
+      $selector = $('#max_selector');
+      $listview = $('#max_listview');
     });
 
-    $selector.find('input:checkbox[value="1"]').click();
-    $selector.find('input:checkbox[value="2"]').click();
-    $selector.find('input:checkbox[value="3"]').click();
-    expect($listview.find('.ss-item').length).toEqual(2);
+    it('limits with max count', () => {
+      $selector.find(':checkbox[value="1"]').click();
+      $selector.find(':checkbox[value="2"]').click();
+      $selector.find(':checkbox[value="3"]').click();
+      expect($listview.find('.ss-item').length).toEqual(2);
+    });
   });
 });

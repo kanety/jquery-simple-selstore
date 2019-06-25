@@ -21,7 +21,8 @@
   </form>
   <script>
   $('#basic_selector').simpleSelstore('#basic_listview', {
-    storeKey: 'basic'
+    store: 'session',
+    storeKey: 'simple-selstore-basic'
   });
   $('#basic_clear').on('click', function() {
     $('#basic_selector').data('simple-selstore').clear();
@@ -41,10 +42,12 @@
     <div id="max_listview"></div>
   </form>
   <script>
-  $('#max_selector').simpleSelstore('#max_listview', {
-    storeKey: 'max',
-    maxSelect: 2
-  });
+  for (var i=0; i<2; i++) {
+    $('#max_selector').simpleSelstore('#max_listview', {
+      storeKey: 'max',
+      maxSelect: 2
+    });
+  }
   </script>
 </body>
 </html>
