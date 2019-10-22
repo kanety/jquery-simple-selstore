@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import Store from '@kanety/js-store';
 
+import './simple-selstore.scss';
 import { NAMESPACE } from './consts';
 import Listview from './listview';
 import Selector from './selector';
