@@ -1,3 +1,5 @@
+const NAMESPACE = 'simple-selstore';
+
 describe('jquery-simple-selstore', () => {
   beforeEach(() => {
     document.body.innerHTML = __html__['index.html'];
@@ -17,15 +19,15 @@ describe('jquery-simple-selstore', () => {
     it('updates listview with checked elements', () => {
       $selector.find(':checkbox[value="1"]').click();
       $selector.find(':checkbox[value="2"]').click();
-      expect($listview.find('.ss-item').length).toEqual(2);
+      expect($listview.find(`.${NAMESPACE}-item`).length).toEqual(2);
 
       $selector.find(':checkbox[value="1"]').click();
-      expect($listview.find('.ss-item').length).toEqual(1);
+      expect($listview.find(`.${NAMESPACE}-item`).length).toEqual(1);
     });
 
     it('clears checked elements', () => {
       $clear.click();
-      expect($listview.find('.ss-item').length).toEqual(0);
+      expect($listview.find(`.${NAMESPACE}-item`).length).toEqual(0);
     });
   });
 
@@ -42,7 +44,7 @@ describe('jquery-simple-selstore', () => {
       $selector.find(':checkbox[value="1"]').click();
       $selector.find(':checkbox[value="2"]').click();
       $selector.find(':checkbox[value="3"]').click();
-      expect($listview.find('.ss-item').length).toEqual(2);
+      expect($listview.find(`.${NAMESPACE}-item`).length).toEqual(2);
     });
   });
 });

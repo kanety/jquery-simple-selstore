@@ -27,8 +27,8 @@ export default class Selector {
   bind() {
     this.$container.on(`click.${NAMESPACE}`, this.options.checkbox, (e) => {
       let $cb = $(e.target);
-      let id = $cb.attr('data-ss-id') || $cb.attr('value');
-      let title = $cb.attr('data-ss-title') || $cb.parent().text();
+      let id = $cb.attr(`data-${NAMESPACE}-id`) || $cb.attr('value');
+      let title = $cb.attr(`data-${NAMESPACE}-title`) || $cb.parent().text();
       if ($cb.prop('checked')) {
         if (this.exeeded()) {
           if (this.options.maxAlert) {
@@ -53,7 +53,7 @@ export default class Selector {
   }
 
   findCheckbox(id) {
-    return this.checkboxes().filter(`[value="${id}"], [data-ss-id="${id}"]`);
+    return this.checkboxes().filter(`[value="${id}"], [data-${NAMESPACE}-id="${id}"]`);
   }
 
   check(id) {

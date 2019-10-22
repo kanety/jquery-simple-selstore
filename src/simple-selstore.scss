@@ -1,26 +1,25 @@
-.simple-selstore-listview {
-  .ss-item {
+.simple-selstore {
+  &-item {
     margin: 0 .3em 0 0;
+  }
+  &-remove {
+    display: inline-block;
+    width: 1.5em;
+    line-height: 1.5em;
+    background-color: #dfdfdf;
+    border-radius: 1em;
+    margin: .25em;
+    text-align: center;
+    color: #444;
+    font-size: .8em;
+    cursor: pointer;
 
-    .ss-remove {
-      display: inline-block;
-      width: 1.5em;
-      line-height: 1.5em;
-      background-color: #dfdfdf;
-      border-radius: 1em;
-      margin: .25em;
-      text-align: center;
-      color: #444;
-      font-size: .8em;
-      cursor: pointer;
-
-      &:after {
-        content: '\00D7';  // ×
-      }
-      &:hover {
-        color: #f44;
-        background-color: #eee;
-      }
+    &:after {
+      content: '×';
+    }
+    &:hover {
+      color: #f44;
+      background-color: #eee;
     }
   }
 }

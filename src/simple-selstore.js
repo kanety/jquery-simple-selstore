@@ -65,7 +65,7 @@ export default class SimpleSelstore {
 
     let items = this.listview.items().map((i, item) => {
       let $item = $(item);
-      return { id: $item.data('ss-id'), title: $item.data('ss-title') };
+      return { id: $item.data(`${NAMESPACE}-id`), title: $item.data(`${NAMESPACE}-title`) };
     }).get();
 
     this.store.set(items);

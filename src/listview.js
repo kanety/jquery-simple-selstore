@@ -25,8 +25,8 @@ export default class Listview {
   }
 
   bind() {
-    this.$container.on(`click.${NAMESPACE}`, '.ss-remove', (e) => {
-      this.instance.unselect($(e.target).parent().data('ss-id'));
+    this.$container.on(`click.${NAMESPACE}`, `.${NAMESPACE}-remove`, (e) => {
+      this.instance.unselect($(e.target).parent().data(`${NAMESPACE}-id`));
       e.stopPropagation();
     });
   }
@@ -36,17 +36,17 @@ export default class Listview {
   }
 
   items() {
-    return this.$container.find('.ss-item');
+    return this.$container.find(`.${NAMESPACE}-item`);
   }
 
   findItem(id) {
-    return this.items().filter(`[data-ss-id="${id}"]`);
+    return this.items().filter(`[data-${NAMESPACE}-id="${id}"]`);
   }
 
   add(id, title) {
-    let $list = $('<span class="ss-item">').attr('data-ss-id', id).attr('data-ss-title', title);
-    $list.append($('<span class="ss-title">').text(title));
-    $list.append($('<span class="ss-remove">'));
+    let $list = $('<span>').addClass(`${NAMESPACE}-item`).attr(`data-${NAMESPACE}-id`, id).attr(`data-${NAMESPACE}-title`, title);
+    $list.append($('<span>').addClass(`${NAMESPACE}-title`).text(title));
+    $list.append($('<span>').addClass(`${NAMESPACE}-remove`));
     $list.append($('<input type="hidden">').attr('name', this.options.listname).val(id));
     this.$container.append($list);
   }
